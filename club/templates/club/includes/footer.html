@@ -1,3 +1,5 @@
+{% load static %}
+
 <footer>
   <div class="main-footer">
     <div class="container">
@@ -7,7 +9,7 @@
             <img
               width="300"
               height="151"
-              src="https://mycelebrityclub.com/wp-content/uploads/2022/09/NicePng_universal-pictures-logo-png_1358944-300x151.png"
+              src="{% static 'NicePng_universal-pictures-logo-png_1358944-300x151.png' %}"
               class="image wp-image-1624 attachment-medium size-medium"
               alt=""
               decoding="async"
@@ -70,15 +72,21 @@
               </li>
 
               <li>
-                <a target="_blank" href="#"><i class="fa fa-youtube"></i></a>
+                <a target="_blank" href="https://mycelebrityclub.com/#"
+                  ><i class="fa fa-youtube"></i
+                ></a>
               </li>
 
               <li>
-                <a target="_blank" href="#"><i class="fa fa-instagram"></i></a>
+                <a target="_blank" href="https://mycelebrityclub.com/#"
+                  ><i class="fa fa-instagram"></i
+                ></a>
               </li>
 
               <li>
-                <a target="_blank" href="#"><i class="fa fa-rss"></i></a>
+                <a target="_blank" href="https://mycelebrityclub.com/#"
+                  ><i class="fa fa-rss"></i
+                ></a>
               </li>
             </ul>
           </div>
@@ -87,5 +95,5 @@
     </div>
   </div>
 
-  <a id="back-to-top" href="#" class="show"></a>
+  <a id="back-to-top" href="https://mycelebrityclub.com/#" class="show"></a>
 </footer>

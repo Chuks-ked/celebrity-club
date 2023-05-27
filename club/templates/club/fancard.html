@@ -1,0 +1,68 @@
+{% extends 'club/base/base.html' %}
+
+{% block body %}
+
+<!-- subheader begin -->
+<section
+  id="subheader"
+  data-speed="8"
+  data-type="background"
+  style="
+    background-image: url('https://mycelebrityclub.com/wp-content/uploads/2022/09/snow8bits.png');
+  "
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-wrap">
+          <h1>Fan Card</h1>
+          <h4>Join the top celebrity club</h4>
+        </div>
+        <ul id="breadcrumbs" class="crumb">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active">Fan Card</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- subheader close -->
+
+<section class="wpb_row vc_row-fluid vc_custom_1496129623587">
+  <div class="container">
+    <div class="row">
+      <div class="wpb_column vc_column_container vc_col-sm-4">
+        <div class="vc_column-inner">
+          <div class="wpb_wrapper">
+            <!-- Element: OT Pricing Tables 2 -->
+            <div class="pricing-s1 mb30">
+              <div class="ribbon">Recommend</div>
+              <div class="top">
+                <h2>VIP FAN CARD</h2>
+                <p class="price">
+                  <span class="currency">$</span> <b>3000</b>
+                  <span class="month"></span>
+                </p>
+              </div>
+              <div class="bottom">
+                <ul>
+                  <li>New Movie Access</li>
+                  <li>Private Contact</li>
+                </ul>
+                <a
+                  href="{% url 'fancard_app' %}"
+                  title="GET CARD"
+                  target="_self"
+                  class="btn btn-custom"
+                  >GET CARD</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
