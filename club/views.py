@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.views.generic import CreateView
+from .form import ContactForm
+from .models import Contact
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -19,4 +23,14 @@ def vacation(request):
 
 def contact(request):
     return render(request, 'club/contact.html')
+
+class ContactView(CreateView):
+    model = Contact
+    form_class = ContactForm
+    template_name = 'club/contact.html'
+    success_url = reverse_lazy('home')
+
+
+def celeb_list(request):
+    return render(request, 'club/celeb_list.html')
 
