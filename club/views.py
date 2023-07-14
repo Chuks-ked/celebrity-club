@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
 from .form import ContactForm
-from .models import Contact
+from .models import *
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -33,4 +33,21 @@ class ContactView(CreateView):
 
 def celeb_list(request):
     return render(request, 'club/celeb_list.html')
+
+def celeb_list(request):
+    celebs = Celebrity.objects.all()
+
+    # search_input = request.GET.get('search-area')
+    # if search_input:
+    #     celebs = Celebrity.objects.filter(building_name__icontains=search_input)
+    # else:
+    #     celebs = Celebrity.objects.all()
+    #     search_input = ''
+
+    return render(request, 'club/celeb_list.html',{
+        'celebs': celebs,
+        # 'search_input':search_input
+    })
+
+
 
