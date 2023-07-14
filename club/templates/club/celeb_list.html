@@ -35,27 +35,27 @@
 
           <section
             class="side-bg no-padding service-list"
-            id="section-service-1"
+            id="section-service-2"
           >
-          {% for celebs in celebs  %}
+
+          {% for celebs in celebs %}
             <div
-              class="image-container col-md-5 col-md-offset-7 pull-right right0 hidden-xs"
+              class="image-container col-md-5 pull-left hidden-xs"
               data-delay="0"
             >
 
             <!-- Desktop views -->
-              <div
-                >
-              <img
-                width="1024"
-                height="897"
-                src="{{ celebs.imageURL }}"
-                class="img-responsive wp-post-image"
-                alt=""
-                decoding="async"
-                sizes="(max-width: 1024px) 100vw, 1024px"
-                title="Keanu-Reeves"
-              />
+              <div>
+                <img
+                  width="400"
+                  height="897"
+                  src="{{ celebs.imageURL }}"
+                  class="img-responsive wp-post-image"
+                  alt=""
+                  decoding="async"
+                  sizes="(max-width: 1024px) 100vw, 1024px"
+                  title="Luke Grimes"
+                />
               </div>
             </div>
 
@@ -64,62 +64,8 @@
             <div class="visible-xs mb-30" data-delay="0">
               <img
                 width="1024"
-                height="897"
-                src="{{ celebs.imageURL }}"
-                class="img-responsive wp-post-image"
-                alt=""
-                decoding="async"
-                sizes="(max-width: 1024px) 100vw, 1024px"
-                title="Keanu-Reeves-Smiling"
-              />
-            </div>
-
-            <div class="container">
-              <div class="row">
-                <div class="inner-padding">
-                  <div data-wow-delay=".5s" class="col-md-6 wow fadeInLeft">
-                    <h3 class="id-color">{{ celebs.celebrity_name }}</h3>
-                    <div class="service-excerpt">
-                      <p>
-                        {{ celebs.about }}
-                      </p>
-                    </div>
-                    <div class="spacer-single"></div>
-                    <a
-                      class="btn-line"
-                      href="https://mycelebrityclub.com/service/keanu-reeves/"
-                      >Read More</a
-                    >
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-          </section>
-
-          <section
-            class="side-bg no-padding service-list"
-            id="section-service-2"
-          >
-            <div
-              class="image-container col-md-5 pull-left hidden-xs"
-              data-delay="0"
-            >
-              <div
-                class="background-image"
-                style="
-                  background-image: url('https://mycelebrityclub.com/wp-content/uploads/2015/08/Luke-Grimes.webp');
-                "
-              ></div>
-            </div>
-
-            <!-- Added this code in 26/03/2019 -->
-            <div class="visible-xs mb-30" data-delay="0">
-              <img
-                width="1024"
                 height="821"
-                src="https://mycelebrityclub.com/wp-content/uploads/2015/08/Luke-Grimes.webp"
+                src="{{ celebs.imageURL }}"
                 class="img-responsive wp-post-image"
                 alt=""
                 decoding="async"
@@ -136,13 +82,10 @@
                     data-wow-delay=".5s"
                     class="col-md-6 col-md-offset-6 wow fadeInRight"
                   >
-                    <h3 class="id-color">Luke Grimes</h3>
+                    <h3 class="id-color">{{ celebs.celebrity_name }}</h3>
                     <div class="service-excerpt">
                       <p>
-                        Luke Timothy Grimes is an American actor. He is best
-                        known for his roles in the acclaimed film American
-                        Sniper, the Fifty Shades film series and the drama
-                        series Yellowstone (2018-present).
+                        {{ celebs.about }}
                       </p>
                     </div>
                     <div class="spacer-single"></div>
@@ -156,198 +99,9 @@
                 </div>
               </div>
             </div>
+          {% endfor %}
           </section>
 
-          <section
-            class="side-bg no-padding service-list"
-            id="section-service-3"
-          >
-            <div
-              class="image-container col-md-5 col-md-offset-7 pull-right right0 hidden-xs"
-              data-delay="0"
-            >
-              <div
-                class="background-image"
-                style="
-                  background-image: url('https://mycelebrityclub.com/wp-content/uploads/2015/08/Jason-Beghe.jpg');
-                "
-              ></div>
-            </div>
-
-            <!-- Added this code in 26/03/2019 -->
-            <div class="visible-xs mb-30" data-delay="0">
-              <img
-                width="1600"
-                height="1200"
-                src="https://mycelebrityclub.com/wp-content/uploads/2015/08/Jason-Beghe.jpg"
-                class="img-responsive wp-post-image"
-                alt=""
-                decoding="async"
-                loading="lazy"
-                srcset="
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/Jason-Beghe.jpg           1600w,
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/Jason-Beghe-600x450.jpg    600w,
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/Jason-Beghe-300x225.jpg    300w,
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/Jason-Beghe-1024x768.jpg  1024w,
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/Jason-Beghe-768x576.jpg    768w,
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/Jason-Beghe-1536x1152.jpg 1536w
-                "
-                sizes="(max-width: 1600px) 100vw, 1600px"
-                title="Jason-Beghe"
-              />
-            </div>
-
-            <div class="container">
-              <div class="row">
-                <div class="inner-padding">
-                  <div data-wow-delay=".5s" class="col-md-6 wow fadeInLeft">
-                    <h3 class="id-color">Jason Beghe</h3>
-                    <div class="service-excerpt">
-                      <p>
-                        Jason Beghe was born on March 12, 1960 in New York City,
-                        New York, USA. He is an actor and producer, known for
-                        The Next Three Days (2010), Thelma &#038; Louise (1991)
-                        and Monkey Shines (1988). He was previously married to
-                        Angie Janu.
-                      </p>
-                    </div>
-                    <div class="spacer-single"></div>
-                    <a
-                      class="btn-line"
-                      href="https://mycelebrityclub.com/service/jason-beghe/"
-                      >Read More</a
-                    >
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section
-            class="side-bg no-padding service-list"
-            id="section-service-4"
-          >
-            <div
-              class="image-container col-md-5 pull-left hidden-xs"
-              data-delay="0"
-            >
-              <div
-                class="background-image"
-                style="
-                  background-image: url('https://mycelebrityclub.com/wp-content/uploads/2015/08/sandra-bullock.webp');
-                "
-              ></div>
-            </div>
-
-            <!-- Added this code in 26/03/2019 -->
-            <div class="visible-xs mb-30" data-delay="0">
-              <img
-                width="500"
-                height="500"
-                src="https://mycelebrityclub.com/wp-content/uploads/2015/08/sandra-bullock.webp"
-                class="img-responsive wp-post-image"
-                alt=""
-                decoding="async"
-                loading="lazy"
-                srcset="
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/sandra-bullock.webp         500w,
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/sandra-bullock-300x300.webp 300w,
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/sandra-bullock-100x100.webp 100w,
-                  https://mycelebrityclub.com/wp-content/uploads/2015/08/sandra-bullock-150x150.webp 150w
-                "
-                sizes="(max-width: 500px) 100vw, 500px"
-                title="sandra-bullock"
-              />
-            </div>
-
-            <div class="container">
-              <div class="row">
-                <div class="inner-padding">
-                  <div
-                    data-wow-delay=".5s"
-                    class="col-md-6 col-md-offset-6 wow fadeInRight"
-                  >
-                    <h3 class="id-color">Sandra Bullock</h3>
-                    <div class="service-excerpt">
-                      <p>
-                        Sandra Annette Bullock was born in Arlington, a Virginia
-                        suburb of Washington, D.C.
-                      </p>
-                    </div>
-                    <div class="spacer-single"></div>
-                    <a
-                      class="btn-line"
-                      href="https://mycelebrityclub.com/service/sandra-bullock/"
-                      >Read More</a
-                    >
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section
-            class="side-bg no-padding service-list"
-            id="section-service-5"
-          >
-            <div
-              class="image-container col-md-5 col-md-offset-7 pull-right right0 hidden-xs"
-              data-delay="0"
-            >
-              <div
-                class="background-image"
-                style="
-                  background-image: url('https://mycelebrityclub.com/wp-content/uploads/2014/09/costner.png');
-                "
-              ></div>
-            </div>
-
-            <!-- Added this code in 26/03/2019 -->
-            <div class="visible-xs mb-30" data-delay="0">
-              <img
-                width="445"
-                height="346"
-                src="https://mycelebrityclub.com/wp-content/uploads/2014/09/costner.png"
-                class="img-responsive wp-post-image"
-                alt=""
-                decoding="async"
-                loading="lazy"
-                srcset="
-                  https://mycelebrityclub.com/wp-content/uploads/2014/09/costner.png         445w,
-                  https://mycelebrityclub.com/wp-content/uploads/2014/09/costner-300x233.png 300w
-                "
-                sizes="(max-width: 445px) 100vw, 445px"
-                title="costner"
-              />
-            </div>
-
-            <div class="container">
-              <div class="row">
-                <div class="inner-padding">
-                  <div data-wow-delay=".5s" class="col-md-6 wow fadeInLeft">
-                    <h3 class="id-color">Kevin Costner</h3>
-                    <div class="service-excerpt">
-                      <p>
-                        Kevin Michael Costner was born on January 18, 1955 in
-                        Lynwood, California, the third child of Bill Costner, a
-                        ditch digger and ultimately an electric line servicer
-                        for Southern California Edison.
-                      </p>
-                    </div>
-                    <div class="spacer-single"></div>
-                    <a
-                      class="btn-line"
-                      href="https://mycelebrityclub.com/service/kevin-costner/"
-                      >Read More</a
-                    >
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </div>
-          </section>
         </div>
       </div>
     </div>

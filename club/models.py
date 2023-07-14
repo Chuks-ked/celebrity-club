@@ -35,3 +35,5 @@ class Celebrity(models.Model):
         except:
             url = ''
         return url
+
+
