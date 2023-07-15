@@ -9,4 +9,5 @@ urlpatterns = [
     path('vacation/', views.vacation, name='vacation'),
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('celebrity-lists/', views.celeb_list, name='celeb_list'),
+    path('celebrity/<str:slug>', views.celeb_details, name='celeb_detail'),
 ]

@@ -11,6 +11,7 @@
               class="services-masonry service-grid row"
               style="position: relative; height: 1140.72px"
             >
+            {% for celeb in celeb %}
               <div class="col-md-4 item-service-grid-sizer"></div>
 
               <div
@@ -21,31 +22,23 @@
                   ><img
                     width="1024"
                     height="897"
-                    src="{% static 'Keanu-Reeves-Smiling.webp' %}"
+                    src="{{ celeb.imageURL }}"
                     class="img-responsive wp-post-image"
                     alt=""
                     decoding="async"
-                    srcset="
-                      https://mycelebrityclub.com/wp-content/uploads/2015/08/Keanu-Reeves-Smiling.webp         1024w,
-                      https://mycelebrityclub.com/wp-content/uploads/2015/08/Keanu-Reeves-Smiling-600x526.webp  600w,
-                      https://mycelebrityclub.com/wp-content/uploads/2015/08/Keanu-Reeves-Smiling-300x263.webp  300w,
-                      https://mycelebrityclub.com/wp-content/uploads/2015/08/Keanu-Reeves-Smiling-768x673.webp  768w
-                    "
                     sizes="(max-width: 1024px) 100vw, 1024px"
-                    title="Keanu-Reeves-Smiling"
+                    title="Keanu-Reeves"
                 /></a>
                 <div class="spacer-single"></div>
 
                 <h3>
                   <a href="https://mycelebrityclub.com/service/keanu-reeves/"
-                    >Keanu Reeves</a
+                    >{{ celeb.celebrity_name }}</a
                   >
                 </h3>
                 <div class="service-excerpt">
                   <p>
-                    Keanu Charles Reeves, whose first name means “cool breeze
-                    over the mountains” in Hawaiian, was born September 2, 1964
-                    in Beirut, Lebanon.
+                    {{ celeb.about }}
                   </p>
                 </div>
                 <div class="spacer-single-10"></div>
@@ -55,7 +48,8 @@
                   >VIEW CELEBRITY</a
                 >
               </div>
-            </div>
+              {% endfor %}
+            </div>            
           </div>
         </div>
       </div>

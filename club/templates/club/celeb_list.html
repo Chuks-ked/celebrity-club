@@ -32,13 +32,13 @@
       <div class="vc_column-inner">
         <div class="wpb_wrapper">
           <!-- Element: OT Services List -->
-
+          {% for celebs in celebs %}
           <section
             class="side-bg no-padding service-list"
             id="section-service-2"
           >
 
-          {% for celebs in celebs %}
+          
             <div
               class="image-container col-md-5 pull-left hidden-xs"
               data-delay="0"
@@ -58,6 +58,9 @@
                 />
               </div>
             </div>
+            <br>
+            <br>
+
 
             <!-- Mobile views -->
 
@@ -99,9 +102,9 @@
                 </div>
               </div>
             </div>
-          {% endfor %}
+          
           </section>
-
+          {% endfor %}
         </div>
       </div>
     </div>
