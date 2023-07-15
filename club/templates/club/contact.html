@@ -5,9 +5,7 @@
   id="subheader"
   data-speed="8"
   data-type="background"
-  style="
-    background-image: url('https://mycelebrityclub.com/wp-content/uploads/2022/09/snow8bits.png');
-  "
+  style="background-image: url('{% static "/images/ccbg.jpg" %}');"
 >
   <div class="container">
     <div class="row">
@@ -49,14 +47,6 @@
                 <p role="status" aria-live="polite" aria-atomic="true"></p>
                 <ul></ul>
               </div>
-              {% comment %} <form
-                action="/contact/#wpcf7-f283-p256-o1"
-                method="post"
-                class="wpcf7-form init"
-                aria-label="Contact form"
-                novalidate="novalidate"
-                data-status="init"
-              > {% endcomment %}
               <form action="" class="" method="POST">
                 {% csrf_token %}
                 <div class="row">
@@ -85,23 +75,10 @@
                     </div>
                   </div>
 
-                  {% comment %} <div class="col-md-12">
-                    <p id="submit">
-                      <input
-                        class="form-control has-spinner submit btn-line"
-                        type="submit"
-                        value="Submit Form"
-                      />
-                    </p>
-                  </div> {% endcomment %}
-
                   <div class="form-group clearfix">
                     <button type="submit" class="btn pull-right btn-default" id="form-contact-submit">Send a Message</button>
                   </div>
-
                 </div>
-                
-
                 <div class="response-output" aria-hidden="true"></div>
               </form>
             </div>
