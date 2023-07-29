@@ -1,5 +1,5 @@
 {% extends 'club/base/base.html' %}
-
+{% load static %}
 {% block body %}
 
 <!-- subheader begin -->
@@ -31,26 +31,28 @@
 <section class="wpb_row vc_row-fluid vc_custom_1496129623587">
   <div class="container">
     <div class="row">
+      {% for plan in plan %}
       <div class="wpb_column vc_column_container vc_col-sm-4">
         <div class="vc_column-inner">
           <div class="wpb_wrapper">
             <!-- Element: OT Pricing Tables 2 -->
             <div class="pricing-s1 mb30">
-              <div class="ribbon">Recommend</div>
+              <div class="ribbon"> {% if plan.recommend == True %} Recommend{% endif %}</div>
               <div class="top">
-                <h2>VIP FAN CARD</h2>
+                <h2>{{ plan.name }}</h2>
                 <p class="price">
-                  <span class="currency">$</span> <b>3000</b>
+                  <span class="currency">$</span> <b>{{plan.amount}}</b>
                   <span class="month"></span>
                 </p>
               </div>
               <div class="bottom">
                 <ul>
-                  <li>New Movie Access</li>
-                  <li>Private Contact</li>
+                  <li>{{plan.option_one}}</li>
+                  <li>{{plan.option_two}}</li>
                 </ul>
+
                 <a
-                  href="{% url 'fancard_app' %}"
+                  href="{% url 'fancard_app' plan.slug %}"
                   title="GET CARD"
                   target="_self"
                   class="btn btn-custom"
@@ -61,6 +63,7 @@
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </section>

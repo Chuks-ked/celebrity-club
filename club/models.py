@@ -1,4 +1,18 @@
 from django.db import models
+from django.urls import reverse
+
+
+class Fancard(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100, null=True, blank=True)
+    amount = models.IntegerField() 
+    option_one = models.CharField(max_length=100)
+    option_two = models.CharField(max_length=100)
+    recommend = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+    
 
 class Contact(models.Model):
     name = models.CharField(max_length=250)
@@ -19,6 +33,18 @@ class Vacation(models.Model):
     city = models.CharField(max_length=100)
     celebrity = models.CharField(max_length=100)
     purpose = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.name
+    
+class FancardApp(models.Model):
+    name = models.CharField(max_length=250)
+    email = models.EmailField(max_length=50)
+    phone = models.CharField(max_length=20)
+    age = models.IntegerField()
+    country = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    celebrity = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name

@@ -96,194 +96,86 @@
                 <p role="status" aria-live="polite" aria-atomic="true"></p>
                 <ul></ul>
               </div>
-              <form
-                action="/fan-card-application/#wpcf7-f1780-p1199-o1"
-                method="post"
-                class="wpcf7-form init"
-                aria-label="Contact form"
-                novalidate="novalidate"
-                data-status="init"
-              >
-                <div style="display: none">
-                  <input type="hidden" name="_wpcf7" value="1780" />
-                  <input type="hidden" name="_wpcf7_version" value="5.7.6" />
-                  <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                  <input
-                    type="hidden"
-                    name="_wpcf7_unit_tag"
-                    value="wpcf7-f1780-p1199-o1"
-                  />
-                  <input
-                    type="hidden"
-                    name="_wpcf7_container_post"
-                    value="1199"
-                  />
-                  <input
-                    type="hidden"
-                    name="_wpcf7_posted_data_hash"
-                    value=""
-                  />
-                </div>
+
+              <form action="" class="contact1-form validate-form" method="POST">
                 <div class="row">
+                  {% csrf_token %}
+
                   <div class="col-md-4">
-                    <p>Choose preferred FAN CARD type</p>
-                    <div>
-                      <p>
-                        <span
-                          class="wpcf7-form-control-wrap"
-                          data-name="your-fancard"
-                          ><select
-                            class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required"
-                            aria-required="true"
-                            aria-invalid="false"
-                            name="your-fancard"
-                          >
-                            <option value="REGULAR - $1000">
-                              REGULAR - $1000
-                            </option>
-                            <option value="VIP - $3000">VIP - $3000</option>
-                            <option value="VVIP - $5000">VVIP - $5000</option>
-                          </select></span
-                        >
-                      </p>
+                    <span
+                      class="wpcf7-form-control-wrap"
+                      data-name="your-fancard"
+                      ><select
+                        class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required"
+                        aria-required="true"
+                        aria-invalid="false"
+                        name="plan_select"
+                      >
+                        <option> {{ fanapp.name }} - ${{fanapp.amount}}</option>
+
+                        <option value="VVIP - $5000">VVIP - $5000</option>
+                      </select></span
+                    >
+
+                    <div class="wrap-input1 validate-input" data-validate="Name is required">
+                        <input class="input1" type="text" name="name" {% if form.is_bound %}value="{{ form.name.value }}"{% endif %} placeholder="Fullname">
+                        <span class="shadow-input1"></span>
+                        {% for err in form.name.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
                     </div>
-                    <div>
-                      <p>
-                        <span
-                          class="wpcf7-form-control-wrap"
-                          data-name="first-name"
-                          ><input
-                            size="40"
-                            class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                            aria-required="true"
-                            aria-invalid="false"
-                            placeholder="First Name"
-                            value=""
-                            type="text"
-                            name="first-name"
-                        /></span>
-                      </p>
+        
+                    <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input1" type="text" name="email" {% if form.is_bound %}value="{{ form.email.value }}"{% endif %} placeholder="Email">
+                        <span class="shadow-input1"></span>
+                        {% for err in form.email.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
                     </div>
-                    <div>
-                      <p>
-                        <span
-                          class="wpcf7-form-control-wrap"
-                          data-name="last-name"
-                          ><input
-                            size="40"
-                            class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                            aria-required="true"
-                            aria-invalid="false"
-                            placeholder="Last Name"
-                            value=""
-                            type="text"
-                            name="last-name"
-                        /></span>
-                      </p>
+        
+                    <div class="wrap-input1 validate-input" data-validate="Phone is required">
+                        <input class="input1" type="text" name="phone" {% if form.is_bound %}value="{{ form.phone.value }}"{% endif %} placeholder="Phone Number">
+                        <span class="shadow-input1"></span>
+                        {% for err in form.phone.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
                     </div>
-                    <div>
-                      <p>
-                        <span
-                          class="wpcf7-form-control-wrap"
-                          data-name="your-email"
-                          ><input
-                            size="40"
-                            class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
-                            aria-required="true"
-                            aria-invalid="false"
-                            placeholder="Email"
-                            value=""
-                            type="email"
-                            name="your-email"
-                        /></span>
-                      </p>
+
+                    <div class="wrap-input1 validate-input" data-validate="Age is required">
+                      <input class="input1" type="text" name="age" {% if form.is_bound %}value="{{ form.age.value }}"{% endif %} placeholder="Age">
+                      <span class="shadow-input1"></span>
+                      {% for err in form.age.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small><br>
+                      {% endfor %}
                     </div>
-                    <div>
-                      <p>
-                        <span
-                          class="wpcf7-form-control-wrap"
-                          data-name="your-phone"
-                          ><input
-                            size="40"
-                            class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel"
-                            aria-required="true"
-                            aria-invalid="false"
-                            placeholder="Phone"
-                            value=""
-                            type="tel"
-                            name="your-phone"
-                        /></span>
-                      </p>
+
+                    <div class="wrap-input1 validate-input" data-validate="Country is required">
+                      <input class="input1" type="text" name="country" {% if form.is_bound %}value="{{ form.country.value }}"{% endif %} placeholder="Country">
+                      <span class="shadow-input1"></span>
+                      {% for err in form.country.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small><br>
+                      {% endfor %}
                     </div>
-                    <div>
-                      <p>
-                        <span
-                          class="wpcf7-form-control-wrap"
-                          data-name="your-age"
-                          ><input
-                            size="40"
-                            class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                            aria-required="true"
-                            aria-invalid="false"
-                            placeholder="Age"
-                            value=""
-                            type="text"
-                            name="your-age"
-                        /></span>
-                      </p>
+
+                    <div class="wrap-input1 validate-input" data-validate="City is required">
+                      <input class="input1" type="text" name="city" {% if form.is_bound %}value="{{ form.city.value }}"{% endif %} placeholder="City">
+                      <span class="shadow-input1"></span>
+                      {% for err in form.city.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small><br>
+                      {% endfor %}
                     </div>
-                    <div>
-                      <p>
-                        <span
-                          class="wpcf7-form-control-wrap"
-                          data-name="your-country"
-                          ><input
-                            size="40"
-                            class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                            aria-required="true"
-                            aria-invalid="false"
-                            placeholder="Your Country"
-                            value=""
-                            type="text"
-                            name="your-country"
-                        /></span>
-                      </p>
+
+                    <div class="wrap-input1 validate-input" data-validate="Celebrity is required">
+                      <input class="input1" type="text" name="celebrity" {% if form.is_bound %}value="{{ form.celebrity.value }}"{% endif %} placeholder="Celebrity">
+                      <span class="shadow-input1"></span>
+                      {% for err in form.celebrity.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small><br>
+                      {% endfor %}
                     </div>
-                    <div>
-                      <p>
-                        <span
-                          class="wpcf7-form-control-wrap"
-                          data-name="your-city"
-                          ><input
-                            size="40"
-                            class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                            aria-required="true"
-                            aria-invalid="false"
-                            placeholder="City"
-                            value=""
-                            type="text"
-                            name="your-city"
-                        /></span>
-                      </p>
-                    </div>
-                    <div>
-                      <p>
-                        <span
-                          class="wpcf7-form-control-wrap"
-                          data-name="your-celebrity"
-                          ><input
-                            size="40"
-                            class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                            aria-required="true"
-                            aria-invalid="false"
-                            placeholder="Celebrity"
-                            value=""
-                            type="text"
-                            name="your-celebrity"
-                        /></span>
-                      </p>
-                    </div>
+
+                  
                   </div>
+
                   <div class="col-md-12">
                     <p id="submit">
                       <input
@@ -292,10 +184,11 @@
                         value="Submit Application"
                       />
                     </p>
-                  </div>
-                </div>
-                <div class="wpcf7-response-output" aria-hidden="true"></div>
+                  </div> 
+
+                </div>                
               </form>
+
             </div>
           </div>
         </div>

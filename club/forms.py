@@ -27,6 +27,18 @@ class VacationForm(forms.ModelForm):
         model = Vacation
         fields = '__all__'
 
+class FancardAppForm(forms.ModelForm):
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    phone = forms.CharField(max_length=256)
+    age = forms.IntegerField()
+    country = forms.CharField(max_length=100)
+    city = forms.CharField(max_length=100)
+    celebrity = forms.CharField(max_length=100)
+
+    class Meta:
+        model = FancardApp
+        fields = '__all__'
 
 class MeetForm(forms.ModelForm):
     name = forms.CharField(max_length=100)

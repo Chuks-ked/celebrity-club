@@ -1,4 +1,3 @@
-from django.views.generic import FormView
 from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.views.generic import View
@@ -23,17 +22,66 @@ def index(request):
     })
 
 def fan_card(request):
-    return render(request, 'club/fancard.html')
+    plan = Fancard.objects.all()
+    return render(request, 'club/fancard.html', {
+        'plan' : plan
+    })
 
-def fancard_app(request):
-    return render(request, 'club/fancard_app.html')
+# def fancard_app(request, slug):
+#     fanapp = Fancard.objects.get(slug = slug)
+#     return render(request, 'club/fancard_app.html',{
+#         'fanapp': fanapp
+#     })
 
-def meet_greet(request):
-    return render(request, 'club/meet_greet.html')
 
-def vacation(request):
-    return render(request, 'club/vacation.html')
+def celeb_list(request):
+    celebs = Celebrity.objects.all()
+    return render(request, 'club/celeb_list.html',{
+        'celebs': celebs,
+    })
 
+
+def celeb_details(request, slug):
+    celeb_detail = Celebrity.objects.get(slug = slug)
+    return render(request, 'club/celeb_details.html', {
+        'celeb_detail':celeb_detail,
+        })
+
+def fancard_app(request, slug):
+    fanapp = Fancard.objects.get(slug = slug)
+    return render(request, 'club/fancard_app.html',{
+        'fanapp': fanapp
+    })
+
+from django.shortcuts import render, get_object_or_404
+from .models import Fancard
+
+class FancardAppView(View):
+    def get(self, request, slug, *args, **kwargs):
+        fanapp = get_object_or_404(Fancard, slug=slug)
+        form = FancardAppForm(instance=fanapp)
+        return render(request, 'club/fancard_app.html', {'form': form})
+
+    def post(self, request, slug, *args, **kwargs):
+        fanapp = get_object_or_404(Fancard, slug=slug)
+        form = FancardAppForm(request.POST, instance=fanapp)
+        if form.is_valid():
+
+            vacation = Fancard(
+                name=form.cleaned_data['name'],
+                email=form.cleaned_data['email'],
+                phone=form.cleaned_data['phone'],
+                age=form.cleaned_data['age'],
+                country=form.cleaned_data['country'],
+                city=form.cleaned_data['city'],
+                celebrity=form.cleaned_data['celebrity'],
+                
+            )
+            vacation.save()
+
+            return redirect('home')
+
+        return render(request, 'club/fancard_app.html', {'fanapp': fanapp})
 
 
 class VacationView(View):
@@ -85,18 +133,6 @@ class ContactView(View):
         
         return render(request, 'club/contact.html', {'form': form})
 
-def celeb_list(request):
-    celebs = Celebrity.objects.all()
-    return render(request, 'club/celeb_list.html',{
-        'celebs': celebs,
-    })
-
-
-def celeb_details(request, slug):
-    celeb_detail = Celebrity.objects.get(slug = slug)
-    return render(request, 'club/celeb_details.html', {
-        'celeb_detail':celeb_detail,
-        })
 
 class MeetView(View):
     def get(self, request, *args, **kwargs):
