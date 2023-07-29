@@ -92,7 +92,8 @@
                 <p role="status" aria-live="polite" aria-atomic="true"></p>
                 <ul></ul>
               </div>
-              <form
+
+              {% comment %} <form
                 action="/meet-and-greet/#wpcf7-f1762-p1561-o1"
                 method="post"
                 class="wpcf7-form init"
@@ -290,6 +291,85 @@
                   </div>
                 </div>
                 <div class="wpcf7-response-output" aria-hidden="true"></div>
+              </form> {% endcomment %}
+
+              <form action="" class="contact1-form validate-form" method="POST">
+                <div class="row">
+                  {% csrf_token %}
+                  {% comment %} <span class="contact1-form-title">
+                    Get in touch
+                  </span> {% endcomment %}
+                  <div class="col-md-4">
+                    <div class="wrap-input1 validate-input" data-validate="Name is required">
+                        <input class="input1" type="text" name="name" {% if form.is_bound %}value="{{ form.name.value }}"{% endif %} placeholder="Fullname">
+                        <span class="shadow-input1"></span>
+                        {% for err in form.name.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input1" type="text" name="email" {% if form.is_bound %}value="{{ form.email.value }}"{% endif %} placeholder="Email">
+                        <span class="shadow-input1"></span>
+                        {% for err in form.email.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="wrap-input1 validate-input" data-validate="Phone is required">
+                        <input class="input1" type="text" name="phone" {% if form.is_bound %}value="{{ form.phone.value }}"{% endif %} placeholder="Phone Number">
+                        <span class="shadow-input1"></span>
+                        {% for err in form.phone.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
+                    </div>
+
+                    <div class="wrap-input1 validate-input" data-validate="Country is required">
+                      <input class="input1" type="text" name="country" {% if form.is_bound %}value="{{ form.country.value }}"{% endif %} placeholder="Country">
+                      <span class="shadow-input1"></span>
+                      {% for err in form.country.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small><br>
+                      {% endfor %}
+                    </div>
+
+                    <div class="wrap-input1 validate-input" data-validate="Celebrity is required">
+                      <input class="input1" type="text" name="celebrity" {% if form.is_bound %}value="{{ form.celebrity.value }}"{% endif %} placeholder="Celebrity">
+                      <span class="shadow-input1"></span>
+                      {% for err in form.celebrity.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small><br>
+                      {% endfor %}
+                    </div>
+
+                  
+                  </div>
+                  
+                  <div class="col-md-8">
+                    <div class="wrap-input1 validate-input" data-validate="Message is required">
+                        <textarea class="input1" name="message" placeholder="Message">{% if form.is_bound %}{{ form.message.value }}{% endif %}</textarea>
+                        <span class="shadow-input1"></span>
+                        {% for err in form.message.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
+                    </div>
+                  </div>
+
+                  {% comment %} <div class="col-md-4">  
+                    <div class="form-group clearfix ">
+                      <button type="submit" class="btn pull-right btn-default" id="form-contact-submit">Submit Application</button>
+                    </div>
+                  </div> {% endcomment %}
+
+                  <div class="col-md-12">
+                    <p id="submit">
+                      <input
+                        class="wpcf7-form-control has-spinner wpcf7-submit btn-line"
+                        type="submit"
+                        value="Submit Application"
+                      />
+                    </p>
+                  </div> 
+                  
+                </div>                
               </form>
             </div>
           </div>

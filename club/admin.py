@@ -8,4 +8,7 @@ class CelebrityAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("celebrity_name",)}
 
 admin.site.register(Contact)
+admin.site.register(Vacation)
+admin.site.register(MeetUp)
+
 admin.site.register(Celebrity, CelebrityAdmin)

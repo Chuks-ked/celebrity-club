@@ -25,6 +25,8 @@
     {% include 'club/includes/extra-styles.html' %}
     {% include 'club/includes/base/base-style.html' %}
 
+    {% block css %} {% endblock %}
+
   </head>
 
   <body
@@ -60,6 +62,7 @@
     />
 
     {% include 'club/includes/extra-scripts.html' %}
+    {% block js %} {% endblock %}
   </body>
   
 </html>

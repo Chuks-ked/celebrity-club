@@ -1,4 +1,5 @@
 {% extends 'club/base/base.html' %} {% block body %}
+{% load static %}
 
 <!-- subheader begin -->
 <section
@@ -47,40 +48,68 @@
                 <p role="status" aria-live="polite" aria-atomic="true"></p>
                 <ul></ul>
               </div>
-              <form action="" class="" method="POST">
-                {% csrf_token %}
+
+              <form action="" class="contact1-form validate-form" method="POST">
                 <div class="row">
+                  {% csrf_token %}
+                  {% comment %} <span class="contact1-form-title">
+                    Get in touch
+                  </span> {% endcomment %}
                   <div class="col-md-4">
-                    <div>
-                      <p>
-                        <span
-                          class="form-control-wrap"
-                          data-name="your-name"
-                          > {{form}}</span>
-                      </p>
+                    <div class="wrap-input1 validate-input" data-validate="Name is required">
+                        <input class="input1" type="text" name="name" {% if form.is_bound %}value="{{ form.name.value }}"{% endif %} placeholder="Fullame">
+                        <span class="shadow-input1"></span>
+                        {% for err in form.name.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
                     </div>
-
-                    
+        
+                    <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input1" type="text" name="email" {% if form.is_bound %}value="{{ form.email.value }}"{% endif %} placeholder="Email">
+                        <span class="shadow-input1"></span>
+                        {% for err in form.email.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="wrap-input1 validate-input" data-validate="Subject is required">
+                        <input class="input1" type="text" name="phone" {% if form.is_bound %}value="{{ form.phone.value }}"{% endif %} placeholder="Phone Number">
+                        <span class="shadow-input1"></span>
+                        {% for err in form.phone.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
+                    </div>
                   </div>
+                  
                   <div class="col-md-8">
-                    <div>
-                      <p>
-                        <span
-                          class="form-control-wrap"
-                          data-name="your-message"
-                        >
-                        
-                        </span>
-                      </p>
+                    <div class="wrap-input1 validate-input" data-validate="Message is required">
+                        <textarea class="input1" name="message" placeholder="Message">{% if form.is_bound %}{{ form.message.value }}{% endif %}</textarea>
+                        <span class="shadow-input1"></span>
+                        {% for err in form.message.errors %}
+                            <small class="text-danger ml-2">{{ err }}</small><br>
+                        {% endfor %}
                     </div>
                   </div>
 
-                  <div class="form-group clearfix">
-                    <button type="submit" class="btn pull-right btn-default" id="form-contact-submit">Send a Message</button>
-                  </div>
-                </div>
-                <div class="response-output" aria-hidden="true"></div>
+                  {% comment %} <div class="col-md-4">  
+                    <div class="form-group clearfix ">
+                      <button type="submit" class="btn pull-right btn-default" id="form-contact-submit">Send a Message</button>
+                    </div>
+                  </div> {% endcomment %}
+
+                  <div class="col-md-12">
+                    <p id="submit">
+                      <input
+                        class="wpcf7-form-control has-spinner wpcf7-submit btn-line"
+                        type="submit"
+                        value="Send a Message"
+                      />
+                    </p>
+                  </div> 
+                  
+                </div>                
               </form>
+
             </div>
             <div class="vc_empty_space" style="height: 150px">
               <span class="vc_empty_space_inner"></span>
