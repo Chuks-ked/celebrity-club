@@ -99,7 +99,7 @@ class VacationView(View):
             vacation.save()
 
              # Send email to the user
-            subject = 'Vacation Plan'
+            subject = 'Vacation Plan with celebrity'
             html_message = render_to_string('club/email/vacation_useremail.html', {'vacation': vacation})
             plain_message = strip_tags(html_message)
             from_email = settings.EMAIL_HOST_USER
@@ -175,6 +175,21 @@ class MeetView(View):
                 # Add other fields from the form if applicable
             )
             meetup.save()
+
+            # Send email to the user
+            subject = 'Meetup with celebrity'
+            html_message = render_to_string('club/email/meet_useremail.html', {'meetup': meetup})
+            plain_message = strip_tags(html_message)
+            from_email = settings.EMAIL_HOST_USER
+            send_mail(subject, plain_message, from_email, [meetup.email], html_message=html_message, fail_silently=True)
+
+            # Send email to the admin
+            subject = 'New MEETUP form submission'
+            html_message = render_to_string('club/email/meet_adminemail.html', {'meetup': meetup})
+            plain_message = strip_tags(html_message)
+            from_email = settings.EMAIL_HOST_USER
+            to_emails = settings.WEBSITE_ADMIN_EMAILS
+            send_mail(subject, plain_message, from_email, to_emails, html_message=html_message, fail_silently=True)            
             # messages.success(self.request, "Profile details updated.")
             return redirect('home')  # Redirect to a thank-you page or any other page you desire after succes
         
