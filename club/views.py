@@ -128,7 +128,34 @@ class ContactView(View):
                 # Add other fields from the form if applicable
             )
             contact.save()
-            # messages.success(self.request, "Profile details updated.")
+
+            # Send email to the user
+            subject = 'Thank you for contacting us celebrity'
+            html_message = render_to_string('club/email/contact_useremail.html', {'contact': contact})
+            plain_message = strip_tags(html_message)
+            from_email = settings.EMAIL_HOST_USER
+            send_mail(subject, plain_message, from_email, [contact.email], html_message=html_message, fail_silently=True)
+
+            # Send email to the admin
+            subject = 'New contact form submission'
+            html_message = render_to_string('club/email/contact_adminemail.html', {'contact': contact})
+            plain_message = strip_tags(html_message)
+            from_email = settings.EMAIL_HOST_USER
+            to_emails = settings.WEBSITE_ADMIN_EMAILS
+            send_mail(subject, plain_message, from_email, to_emails, html_message=html_message, fail_silently=True)
+
+            # admin_message = f'A new contact form has been submitted.\nName: {contact.name}\nEmail: {contact.email}\nMessage: {contact.message}'
+            # admin_from_email = settings.EMAIL_HOST_USER  # Replace with your actual email address
+            # admin_to_email = settings.WEBSITE_ADMIN_EMAILS  # Replace with the admin's email address
+            # send_mail(subject, admin_message, admin_from_email, admin_to_email, fail_silently=True)
+
+            # html_message = render_to_string('core/email/new-withdrawal-alert.html', {'name': name, 'amount': amount, 'btcn_addr': btcn_addr, 'nationality': nationality, 'date': date, 'origin': origin})
+            # plain_message = strip_tags(html_message)
+            # from_email = settings.EMAIL_HOST_USER
+            # to_emails = settings.WEBSITE_ADMIN_EMAILS
+            # send_mail('ExtendGrowths-New Withdrawal Alert!', plain_message, from_email, to_emails, html_message=html_message, fail_silently=True)
+
+
             return redirect('home')  # Redirect to a thank-you page or any other page you desire after succes
         
         return render(request, 'club/contact.html', {'form': form})
