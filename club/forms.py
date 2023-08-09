@@ -45,10 +45,6 @@ class FancardAppForm(forms.ModelForm):
         model = FancardApp
         fields = '__all__'
 
-    # def __init__(self, *args, **kwargs):
-    #     super(FancardAppForm, self).__init__(*args, **kwargs)
-    #     fan_card_choices = Fancard.objects.values_list('name', 'name').distinct()
-    #     self.fields['fan_card'].widget = forms.Select(choices=fan_card_choices)
 
 class MeetForm(forms.ModelForm):
     name = forms.CharField(max_length=100)

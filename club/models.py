@@ -72,12 +72,6 @@ class Celebrity(models.Model):
 
     def __str__(self):
         return self.celebrity_name
-    
-    # @property
-    # def tenant_registration_url(self):
-    #     return reverse('demo',kwargs={
-    #         'slug':self.slug
-    #     })
 
     @property
     def imageURL(self):

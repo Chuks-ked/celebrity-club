@@ -1,4 +1,5 @@
 {% extends 'club/base/base.html' %}
+{% load static %}
 
 {% block body %}
 
@@ -8,9 +9,7 @@
   id="subheader"
   data-speed="8"
   data-type="background"
-  style="
-    background-image: url('https://mycelebrityclub.com/wp-content/uploads/2022/09/snow8bits.png');
-  "
+  style="background-image: url('{% static "/images/ccbg.jpg" %}');"
 >
   <div class="container">
     <div class="row">
