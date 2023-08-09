@@ -27,11 +27,11 @@ def fan_card(request):
         'plan' : plan
     })
 
-def fancard_app(request, slug):
-    fanapp = Fancard.objects.get(slug = slug)
-    return render(request, 'club/fancard_app.html',{
-        'fanapp': fanapp
-    })
+# def fancard_app(request, slug):
+#     fanapp = Fancard.objects.get(slug = slug)
+#     return render(request, 'club/fancard_app.html',{
+#         'fanapp': fanapp
+#     })
 
 
 def celeb_list(request):
@@ -52,14 +52,15 @@ class FancardAppView(View):
     def get(self, request, slug, *args, **kwargs):
         fanapp = get_object_or_404(Fancard, slug=slug)
         form = FancardAppForm(instance=fanapp)
-        return render(request, 'club/fancard_app.html', {'form': form})
+        return render(request, 'club/fancard_app.html', {'form': form, 'fanapp':fanapp})
 
     def post(self, request, slug, *args, **kwargs):
         fanapp = get_object_or_404(Fancard, slug=slug)
         form = FancardAppForm(request.POST, instance=fanapp)
         if form.is_valid():
 
-            vacation = Fancard(
+            vacation = FancardApp(
+                fan_card = form.cleaned_data['fan_card'],
                 name=form.cleaned_data['name'],
                 email=form.cleaned_data['email'],
                 phone=form.cleaned_data['phone'],
@@ -73,7 +74,7 @@ class FancardAppView(View):
 
             return redirect('home')
 
-        return render(request, 'club/fancard_app.html', {'fanapp': fanapp})
+        return render(request, 'club/fancard_app.html', {'form': form, 'fanapp':fanapp})
 
 
 class VacationView(View):

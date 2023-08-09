@@ -148,13 +148,26 @@
                       {% endfor %}
                     </div>
 
+                    {% comment %} Celebrity {% endcomment %}
+
                     <div class="wrap-input1 validate-input" data-validate="Celebrity is required">
-                      <input class="input1" type="text" name="celebrity" {% if form.is_bound %}value="{{ form.celebrity.value }}"{% endif %} placeholder="Celebrity">
+                      <select class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" name="celebrity" id="id_celebrity">
+                          <option value="" {% if not form.celebrity.value %}selected{% endif %}>Celebrity</option>
+                          {% for celebrity in form.fields.celebrity.queryset %}
+                              <option value="{{ celebrity.pk }}"
+                                  {% if form.celebrity.value == celebrity.pk %}selected{% endif %}>
+                                  {{ celebrity.celebrity_name }}
+                              </option>
+                          {% endfor %}
+                      </select>
                       <span class="shadow-input1"></span>
                       {% for err in form.celebrity.errors %}
                           <small class="text-danger ml-2">{{ err }}</small><br>
                       {% endfor %}
                     </div>
+                  
+                    {% comment %} Celebrity ends {% endcomment %}
+
                   </div>
                   
                   <div class="col-md-8">

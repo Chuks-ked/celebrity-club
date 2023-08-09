@@ -38,6 +38,7 @@ class Vacation(models.Model):
         return self.name
     
 class FancardApp(models.Model):
+    fan_card = models.CharField(max_length=100, blank=True, null=True)
     name = models.CharField(max_length=250)
     email = models.EmailField(max_length=50)
     phone = models.CharField(max_length=20)

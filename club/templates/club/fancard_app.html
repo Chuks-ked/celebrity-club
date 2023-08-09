@@ -102,21 +102,28 @@
                   {% csrf_token %}
 
                   <div class="col-md-4">
-                    <span
-                      class="wpcf7-form-control-wrap"
-                      data-name="your-fancard"
-                      ><select
-                        class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required"
-                        aria-required="true"
-                        aria-invalid="false"
-                        name="plan_select"
-                      >
-                        <option> {{ fanapp.name }} - ${{fanapp.amount}}</option>
+                    <!-- celebrity starts-->
+                    <div class="wrap-input1 validate-input" data-validate="Celebrity is required">
+                      <select class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" name="fan_card" id="id_celebrity">
+                          <option value="{{fanapp.pk}}" {% if not form.fan_card.value %}selected{% endif %}>{{ fanapp.name }} - ${{fanapp.amount}}</option>
 
-                        <option value="VVIP - $5000">VVIP - $5000</option>
-                      </select></span
-                    >
 
+                          {% for card in form.fields.fan_card.queryset %}
+                              <option value="{{ card.pk }}"
+                                  {% if form.card.value == card.pk %}selected{% endif %}>
+                                  
+                                  {{ card.name }} - ${{card.amount}}
+                              </option>
+                          {% endfor %}
+                      </select>
+                      <span class="shadow-input1"></span>
+                      {% for err in form.fan_card.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small><br>
+                      {% endfor %}
+                    </div>
+                    <!-- celebrity end-->
+
+                    
                     <div class="wrap-input1 validate-input" data-validate="Name is required">
                         <input class="input1" type="text" name="name" {% if form.is_bound %}value="{{ form.name.value }}"{% endif %} placeholder="Fullname">
                         <span class="shadow-input1"></span>
@@ -165,13 +172,25 @@
                       {% endfor %}
                     </div>
 
+                    {% comment %} Celebrity {% endcomment %}
+
                     <div class="wrap-input1 validate-input" data-validate="Celebrity is required">
-                      <input class="input1" type="text" name="celebrity" {% if form.is_bound %}value="{{ form.celebrity.value }}"{% endif %} placeholder="Celebrity">
+                      <select class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" name="celebrity" id="id_celebrity">
+                          <option value="" {% if not form.celebrity.value %}selected{% endif %}>Celebrity</option>
+                          {% for celebrity in form.fields.celebrity.queryset %}
+                              <option value="{{ celebrity.pk }}"
+                                  {% if form.celebrity.value == celebrity.pk %}selected{% endif %}>
+                                  {{ celebrity.celebrity_name }}
+                              </option>
+                          {% endfor %}
+                      </select>
                       <span class="shadow-input1"></span>
                       {% for err in form.celebrity.errors %}
                           <small class="text-danger ml-2">{{ err }}</small><br>
                       {% endfor %}
                     </div>
+                  
+                    {% comment %} Celebrity ends {% endcomment %}
 
                   
                   </div>
